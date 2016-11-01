@@ -1,0 +1,27 @@
+#!/bin/bash
+
+read -p "Are you sure? " -n 1 -r
+echo     (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+
+
+read -p "Continue (y/n)?" choice
+case "$choice" in 
+  y|Y ) echo "yes";;
+  n|N ) echo "no";;
+  * ) echo "invalid";;
+esac
+
+
+while true; do
+    read -p "Do you wish to install this program?" yn
+    case $yn in
+        [Yy]* ) make install; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+~          
